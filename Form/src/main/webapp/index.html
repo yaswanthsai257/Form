@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mark Submission Form</title>
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Mark Submission Form</h2>
+    <form action="FORM">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="maths">Maths Mark:</label>
+        <input type="number" id="maths" name="maths" min="0" max="100" required>
+      </div>
+      <div class="form-group">
+        <label for="english">English Mark:</label>
+        <input type="number" id="english" name="english" min="0" max="100" required>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    function submitForm(event) {
+      event.preventDefault();
+      
+      // Get form values
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const maths = parseInt(document.getElementById('maths').value);
+      const english = parseInt(document.getElementById('english').value);
+      
+      // Validate marks
+      if (maths < 0 || maths > 100 || isNaN(maths) || english < 0 || english > 100 || isNaN(english)) {
+        alert('Please enter valid marks for Maths and English (0-100).');
+        return;
+      }
+      
+      // You can handle form submission here, for example, send the data to a server or display it
+      
+      // For demonstration purposes, let's just log the data to the console
+      console.log('Name:', name);
+      console.log('Email:', email);
+      console.log('Maths Mark:', maths);
+      console.log('English Mark:', english);
+    }
+  </script>
+</body>
+</html>
